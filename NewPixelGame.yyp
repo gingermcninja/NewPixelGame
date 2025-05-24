@@ -32,7 +32,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.13.1.193",
+    "IDEVersion":"2024.13.0.190",
   },
   "name":"NewPixelGame",
   "resources":[
@@ -40,7 +40,9 @@
     {"id":{"name":"obj_action_light","path":"objects/obj_action_light/obj_action_light.yy",},},
     {"id":{"name":"obj_action_parent","path":"objects/obj_action_parent/obj_action_parent.yy",},},
     {"id":{"name":"obj_action_run","path":"objects/obj_action_run/obj_action_run.yy",},},
+    {"id":{"name":"obj_battle_enemy","path":"objects/obj_battle_enemy/obj_battle_enemy.yy",},},
     {"id":{"name":"obj_battle_manager","path":"objects/obj_battle_manager/obj_battle_manager.yy",},},
+    {"id":{"name":"obj_battle_player","path":"objects/obj_battle_player/obj_battle_player.yy",},},
     {"id":{"name":"obj_battle_switcher","path":"objects/obj_battle_switcher/obj_battle_switcher.yy",},},
     {"id":{"name":"obj_enemy_parent","path":"objects/obj_enemy_parent/obj_enemy_parent.yy",},},
     {"id":{"name":"obj_enemy1","path":"objects/obj_enemy1/obj_enemy1.yy",},},
@@ -63,6 +65,7 @@
     {"id":{"name":"player_idle_right","path":"sprites/player_idle_right/player_idle_right.yy",},},
     {"id":{"name":"player_run_left","path":"sprites/player_run_left/player_run_left.yy",},},
     {"id":{"name":"player_run_right","path":"sprites/player_run_right/player_run_right.yy",},},
+    {"id":{"name":"spr_box","path":"sprites/spr_box/spr_box.yy",},},
     {"id":{"name":"Sprite18","path":"sprites/Sprite18/Sprite18.yy",},},
     {"id":{"name":"Sprite2","path":"sprites/Sprite2/Sprite2.yy",},},
     {"id":{"name":"Sprite3","path":"sprites/Sprite3/Sprite3.yy",},},
