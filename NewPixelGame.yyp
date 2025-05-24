@@ -65,6 +65,7 @@
     {"id":{"name":"player_idle_right","path":"sprites/player_idle_right/player_idle_right.yy",},},
     {"id":{"name":"player_run_left","path":"sprites/player_run_left/player_run_left.yy",},},
     {"id":{"name":"player_run_right","path":"sprites/player_run_right/player_run_right.yy",},},
+    {"id":{"name":"spr_box","path":"sprites/spr_box/spr_box.yy",},},
     {"id":{"name":"Sprite18","path":"sprites/Sprite18/Sprite18.yy",},},
     {"id":{"name":"Sprite2","path":"sprites/Sprite2/Sprite2.yy",},},
     {"id":{"name":"Sprite3","path":"sprites/Sprite3/Sprite3.yy",},},
