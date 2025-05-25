@@ -45,6 +45,7 @@
     {"id":{"name":"obj_battle_manager","path":"objects/obj_battle_manager/obj_battle_manager.yy",},},
     {"id":{"name":"obj_battle_player","path":"objects/obj_battle_player/obj_battle_player.yy",},},
     {"id":{"name":"obj_battle_switcher","path":"objects/obj_battle_switcher/obj_battle_switcher.yy",},},
+    {"id":{"name":"obj_dialog","path":"objects/obj_dialog/obj_dialog.yy",},},
     {"id":{"name":"obj_enemy_parent","path":"objects/obj_enemy_parent/obj_enemy_parent.yy",},},
     {"id":{"name":"obj_enemy1","path":"objects/obj_enemy1/obj_enemy1.yy",},},
     {"id":{"name":"obj_enemy2","path":"objects/obj_enemy2/obj_enemy2.yy",},},
