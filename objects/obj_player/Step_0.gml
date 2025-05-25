@@ -18,3 +18,7 @@ else {
  if (sprite_index == player_run_left) sprite_index = player_idle_left;
  else if (sprite_index == player_run_right) sprite_index = player_idle_right;
 }
+
+if (hp <= 0) {
+	game_restart();
+}
