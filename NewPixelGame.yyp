@@ -36,6 +36,7 @@
   },
   "name":"NewPixelGame",
   "resources":[
+    {"id":{"name":"Font1","path":"fonts/Font1/Font1.yy",},},
     {"id":{"name":"obj_action_heavy","path":"objects/obj_action_heavy/obj_action_heavy.yy",},},
     {"id":{"name":"obj_action_light","path":"objects/obj_action_light/obj_action_light.yy",},},
     {"id":{"name":"obj_action_parent","path":"objects/obj_action_parent/obj_action_parent.yy",},},
