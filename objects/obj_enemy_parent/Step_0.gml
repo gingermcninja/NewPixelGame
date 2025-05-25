@@ -7,6 +7,10 @@ var _ver = clamp(target_y - y, -1, 1);
 
 move_and_collide(_hor * move_speed, _ver * move_speed, [tilemap, obj_enemy_parent]);
 
+if (hp <= 0) {
+	instance_destroy();
+}
+
 if(_hor != 0  or _ver != 0) {
  if (_hor > 0) sprite_index = run_right_sprite;
  else if (_hor < 0) sprite_index = run_left_sprite;
