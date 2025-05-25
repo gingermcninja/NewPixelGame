@@ -32,7 +32,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.13.0.190",
+    "IDEVersion":"2024.13.1.193",
   },
   "name":"NewPixelGame",
   "resources":[
@@ -52,6 +52,7 @@
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"rm_battle","path":"rooms/rm_battle/rm_battle.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"Dialogue","path":"scripts/Dialogue/Dialogue.yy",},},
     {"id":{"name":"battle_heavy","path":"sprites/battle_heavy/battle_heavy.yy",},},
     {"id":{"name":"battle_light","path":"sprites/battle_light/battle_light.yy",},},
     {"id":{"name":"battle_run","path":"sprites/battle_run/battle_run.yy",},},
