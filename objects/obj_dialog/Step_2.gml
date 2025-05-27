@@ -6,7 +6,7 @@ if (current_char < string_length(_str)) {
 	current_char += char_speed * (1 + keyboard_check(input_key));
 	draw_message = string_copy(_str, 0, current_char);
 }
-else if (keyboard_check_pressed(input_key)) {
+else if (keyboard_check_pressed(input_key) || mouse_check_button(mb_left)) {
 	current_message++;
 	if (current_message >= array_length(messages)){
 		instance_destroy();	
