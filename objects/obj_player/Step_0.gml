@@ -11,6 +11,17 @@ var _dir = point_direction(0, 0, _hor, _ver);
 _hor = lengthdir_x(_len, _dir);
 _ver = lengthdir_y(_len, _dir);
 
+
+if (mouse_check_button(mb_left)) {
+	var _dmousex = mouse_x - x;
+	var _dmousey = mouse_y - y;
+	_len = 1;
+	_dir = point_direction(0, 0, _dmousex, _dmousey);
+	_hor = lengthdir_x(_len, _dir);
+	_ver = lengthdir_y(_len, _dir);
+
+}
+
 move_and_collide(_hor * move_speed, _ver * move_speed, tile_map);
 
 if(_hor != 0  or _ver != 0) {
