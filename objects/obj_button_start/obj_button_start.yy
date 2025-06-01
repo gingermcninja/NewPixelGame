@@ -1,19 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_health",
+  "%Name":"obj_button_start",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_health",
+  "name":"obj_button_start",
   "overriddenProperties":[],
   "parent":{
-    "name":"Items",
-    "path":"folders/Objects/Items.yy",
+    "name":"UI",
+    "path":"folders/Objects/UI.yy",
   },
   "parentObjectId":{
-    "name":"obj_item_parent",
-    "path":"objects/obj_item_parent/obj_item_parent.yy",
+    "name":"obj_button_parent",
+    "path":"objects/obj_button_parent/obj_button_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_health",
-    "path":"sprites/spr_health/spr_health.yy",
+    "name":"start_button",
+    "path":"sprites/start_button/start_button.yy",
   },
   "spriteMaskId":null,
   "visible":true,
