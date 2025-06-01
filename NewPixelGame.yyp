@@ -56,6 +56,7 @@
     {"id":{"name":"obj_battle_manager","path":"objects/obj_battle_manager/obj_battle_manager.yy",},},
     {"id":{"name":"obj_battle_player","path":"objects/obj_battle_player/obj_battle_player.yy",},},
     {"id":{"name":"obj_battle_switcher","path":"objects/obj_battle_switcher/obj_battle_switcher.yy",},},
+    {"id":{"name":"obj_boss_parent","path":"objects/obj_boss_parent/obj_boss_parent.yy",},},
     {"id":{"name":"obj_boss1","path":"objects/obj_boss1/obj_boss1.yy",},},
     {"id":{"name":"obj_button_parent","path":"objects/obj_button_parent/obj_button_parent.yy",},},
     {"id":{"name":"obj_button_start","path":"objects/obj_button_start/obj_button_start.yy",},},
