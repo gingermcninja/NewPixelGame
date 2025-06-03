@@ -23,7 +23,7 @@ function add_xp(_xp_to_add) {
 		hp_total += 5;
 		hp = hp_total;
 		damage += 0.8;
-		
+		audio_play_sound(Woohoo, 0, false);
 		create_dialog([
 		{
 			name: "Congrats",
