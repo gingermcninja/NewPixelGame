@@ -8,6 +8,8 @@ draw_set_font(Font1);
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
 
+/*
 for(var i=0; i < menu_item_length; i++) {
 	draw_text(_dx + box_border, _dy + box_border + (item_vertical_spacing*i), menu_items[i]);
 }
+*/

@@ -72,6 +72,7 @@
     {"id":{"name":"obj_enemy5","path":"objects/obj_enemy5/obj_enemy5.yy",},},
     {"id":{"name":"obj_health","path":"objects/obj_health/obj_health.yy",},},
     {"id":{"name":"obj_item_parent","path":"objects/obj_item_parent/obj_item_parent.yy",},},
+    {"id":{"name":"obj_menu_item","path":"objects/obj_menu_item/obj_menu_item.yy",},},
     {"id":{"name":"obj_menu","path":"objects/obj_menu/obj_menu.yy",},},
     {"id":{"name":"obj_npc_1","path":"objects/obj_npc_1/obj_npc_1.yy",},},
     {"id":{"name":"obj_npc_2","path":"objects/obj_npc_2/obj_npc_2.yy",},},
