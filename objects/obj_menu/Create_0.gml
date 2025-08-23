@@ -23,7 +23,7 @@ item_position_struct = {}
 
 menu_item_length = array_length(menu_items);
 
-//items = []
+itemArray = array_create(menu_item_length);
 for(var i = 0; i < menu_item_length; i++) {
 	var item = instance_create_depth(_dx, _dy+(i*50), 0, obj_menu_item);
 	item.width = width;
@@ -31,5 +31,5 @@ for(var i = 0; i < menu_item_length; i++) {
 	item._dx = _dx;
 	item._dy = _dy+(i*item.height); 
 	item.text = menu_items[i];
-	//items[i] = item;
+	array_push(itemArray,item)
 }
