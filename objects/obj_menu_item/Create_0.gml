@@ -11,5 +11,13 @@ show_debug_message("item created!");
 
 action = function() {
 	show_debug_message("item clicked!");
-	obj_battle_manager.player_attack(obj_battle_player.data.damage, pow);	
+	if(type == "action") {
+		if(identifier == "fight") {
+			obj_battle_manager.player_attack(obj_battle_player.data.damage, pow);	
+		}
+		else if(identifier == "flee") {
+			audio_play_sound(flee, 0, false);
+			room_goto(obj_battle_switcher.original_room);
+		}
+	}
 }

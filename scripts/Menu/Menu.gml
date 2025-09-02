@@ -5,66 +5,67 @@ function create_menu(){
 }
 
 main_menu = {
-	"identifier": "main",
-	"menu_items": [
+	identifier: "main",
+	menu_items: [
 		{
-			"title": "Fight",
-			"type": "action",
-			"identifier": "fight"
+			title: "Fight",
+			type: "action",
+			identifier: "fight"
 		},
 		{
-			"title": "Magic",
-			"type": "menu",
-			"identifier": "magic"
+			title: "Magic",
+			type: "menu",
+			identifier: "magic"
 		},
 		{
-			"title": "Flee",
-			"type": "action",
-			"identifier": "flee"
+			title: "Flee",
+			type: "action",
+			identifier: "flee"
 		},
 		{
-			"title": "Item",
-			"type": "menu",
-			"identifier": "item"
+			title: "Item",
+			type: "menu",
+			identifier: "item"
 		}
 	]
 }
-	
+
 fight_menu = {
-	"identifier": "fight",
-	"menu_items": [
+	identifier: "fight",
+	menu_items: [
 		{
-			"title": "Attack",
-			"type": "action",
-			"identifier": "attack",
+			title: "Attack",
+			type: "action",
+			identifier: "attack",
 		},
 		{
-			"title": "Heavy Attack",
-			"type": "action",
-			"identifier": "heavy_attack",
+			title: "Heavy Attack",
+			type: "action",
+			identifier: "heavy_attack",
 		}
 	]
 }
 	
 magic_menu = {
-	"identifier": "magic",
-	"menu_items": [
+	identifier: "magic",
+	menu_items: [
 		{
-			"title": "Fire",
-			"type": "action",
-			"identifier": "fire",
+			title: "Fire",
+			type: "action",
+			identifier: "fire",
 		},
 		{
-			"title": "Ice",
-			"type": "action",
-			"identifier": "ice",
+			title: "Ice",
+			type: "action",
+			identifier: "ice",
 		},
 		{
-			"title": "Lightning",
-			"type": "action",
-			"identifier": "lightning",
+			title: "Lightning",
+			type: "action",
+			identifier: "lightning",
 		}
 	]
 }
-	
+/*
 all_menus = [ main_menu, fight_menu, magic_menu ];
+*/

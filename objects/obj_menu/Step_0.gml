@@ -4,14 +4,14 @@ up_key = keyboard_check_pressed(vk_up);
 down_key = keyboard_check_pressed(vk_down);
 
 for(var i = 0; i < menu_item_length; i++) {
-	item = array_get(itemArray, i)
-	
-	message = "mouse_x: " + string(mouse_x) + ", mouse_y: " + string(mouse_y) + ", menu x: " + string(x) + ", menu y: " + string(y) + ", item x: " + string(item.x) + ", item y: " + string(item.y) + ", i: " + string(i)
-	show_debug_message(message)
-	
-	if point_in_rectangle(mouse_x, mouse_y, _dx, _dy+(i*50), _dx+width, _dy+(i*50)+50) {
+	itemId =itemArray[i]
+	item = instance_find(obj_menu_item, i);
+	_mx = device_mouse_x_to_gui(0)
+	_my = device_mouse_y_to_gui(0)
+
+	if point_in_rectangle(_mx, _my, item._dx, item._dy, item._dx+item.width, item._dy+item.height) {
 		if mouse_check_button(mb_left) {
-			show_debug_message("CLICK!")
+			item.action()
 		}
 	}
 }
