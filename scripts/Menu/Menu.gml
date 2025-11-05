@@ -66,6 +66,5 @@ magic_menu = {
 		}
 	]
 }
-/*
+
 all_menus = [ main_menu, fight_menu, magic_menu ];
-*/

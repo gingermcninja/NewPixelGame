@@ -3,6 +3,7 @@
 /*
 draw_self();
 draw_set_color(c_gray);
-draw_rectangle(x, y, width, 20,false);
+draw_rectangle(_dx, _dy, width, height, true);
+draw_text(x,y,text);
 */
 

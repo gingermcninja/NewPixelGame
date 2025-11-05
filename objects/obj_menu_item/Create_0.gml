@@ -7,15 +7,16 @@ _dx = 0;
 _dy = 100;
 width = 100;
 height = 20;
+menu_data = {};
 show_debug_message("item created!");
 
 action = function() {
 	show_debug_message("item clicked!");
-	if(type == "action") {
-		if(identifier == "fight") {
-			obj_battle_manager.player_attack(obj_battle_player.data.damage, pow);	
+	if(menu_data.type == "action") {
+		if(menu_data.identifier == "fight") {
+			obj_battle_manager.player_attack(obj_battle_player.data.damage, pow);
 		}
-		else if(identifier == "flee") {
+		else if(menu_data.identifier == "flee") {
 			audio_play_sound(flee, 0, false);
 			room_goto(obj_battle_switcher.original_room);
 		}
