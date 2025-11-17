@@ -3,6 +3,7 @@ damage_to_enemy = 0;
 attack_sound = pow;
 player_attack = function(_damage, _sound) 
 {
+	obj_enemy_damage = instance_create_depth(obj_battle_enemy.x-30, obj_battle_enemy.y-5, -999, obj_battle_damage);
 	damage_to_enemy = _damage;
 	attack_sound = _sound;
 	enemy_turn = 1;

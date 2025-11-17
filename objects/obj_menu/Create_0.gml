@@ -3,6 +3,9 @@
 //menu = all_menus;
 //menu_items = [];
 
+#macro ITEM_WIDTH 150
+#macro ITEM_HEIGHT 184
+
 gui_w = display_get_gui_width();
 gui_h = display_get_gui_height();
 
@@ -25,9 +28,6 @@ display = function() {
 		item.identifier = selected_menu.menu_items[i].identifier
 	}
 }
-
-
-
 
 pos = 0;
 visible = visible_at_launch;
