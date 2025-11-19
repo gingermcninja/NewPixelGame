@@ -41,6 +41,10 @@ action = function() {
 			fightMenuOpen = false;
 
 		}
+		else if(menu_data.identifier == "fire" || menu_data.identifier == "ice" || menu_data.identifier == "lightning") {
+			obj_battle_manager.player_magic(menu_data.identifier);
+			owner.closeSubMenus();
+		}
 
 	}
 	else if (menu_data.type == "menu") {

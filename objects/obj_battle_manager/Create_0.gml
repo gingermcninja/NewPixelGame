@@ -22,9 +22,14 @@ player_attack = function(_damage, _sound)
 	obj_battle_player.alarm[0] = 10;
 }
 
-player_magic = function()
+player_magic = function(_magic_identifier)
 {
-	
+	obj_enemy_damage = instance_create_depth(obj_battle_enemy.x-30, obj_battle_enemy.y-5, -999, obj_battle_damage);
+	damage_to_enemy = 20;
+	attack_sound = zap;
+	enemy_turn = 1;
+	alarm[0] = 40;
+	obj_battle_player.alarm[0] = 10;
 }
 
 check_for_end = function ()
