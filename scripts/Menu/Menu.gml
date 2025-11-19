@@ -58,11 +58,6 @@ fight_menu = {
 	identifier: "fight",
 	menu_items: [
 		{
-			title: "Attack",
-			type: "action",
-			identifier: "attack",
-		},
-		{
 			title: "Heavy Attack",
 			type: "action",
 			identifier: "heavy_attack",
