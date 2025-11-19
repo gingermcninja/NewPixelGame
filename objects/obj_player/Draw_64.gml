@@ -10,7 +10,7 @@ var _barh = 32;
 draw_set_font(Font1);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-
+draw_set_color(c_white);
 // Healthbar
 var _health_barw = _barw * (hp / hp_total);
 

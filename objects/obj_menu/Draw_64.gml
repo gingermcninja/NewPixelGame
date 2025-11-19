@@ -1,30 +1,16 @@
 /// @description Insert description here
 // You can write your code in this editor
-var _dx = 0;
-var _dy = gui_h * 0.7;
-var _boxw = gui_w * 0.25;
-var _boxh = 50;
+//draw menu box
+
+	draw_sprite_ext(spr_box, 0, _dx, _dy, width/sprite_width, height/sprite_height, 0, c_white, .75);
+
+	//draw menu items
+	draw_set_font(Font1);
+	draw_set_valign(fa_top);
+	draw_set_halign(fa_left);
+
 /*
-draw_sprite_stretched(spr_box, 0, _dx, _dy, _boxw, _boxh);
-
-_dx += 16;
-_dy += 16;
-
-draw_set_font(Font1);
-draw_text(_dx, _dy, "Fight");
-
-_dy += 40;
-_dx -= 16;
-draw_sprite_stretched(spr_box, 0, _dx, _dy, _boxw, _boxh);
-_dx +=16;
-draw_text(_dx, _dy, "Magic");
-
-
-var _name = messages[current_message].name;
-draw_set_color(global.char_colors[$ _name]);
-draw_text(_dx, _dy, _name);
-draw_set_color(c_white);
-
-_dy += 40;
-draw_text_ext(_dx, _dy, draw_message, -1, _boxw - _dx * 2);
+for(var i=0; i < menu_item_length; i++) {
+	draw_text(_dx + box_border, _dy + box_border + (item_vertical_spacing*i), menu_items[i]);
+}
 */
