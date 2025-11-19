@@ -4,27 +4,29 @@
 //menu_items = [];
 
 #macro ITEM_WIDTH 150
-#macro ITEM_HEIGHT 184
+
 draw_set_font(Font1);
 gui_w = display_get_gui_width();
 gui_h = display_get_gui_height();
 
+menu_item_length = array_length(selected_menu.menu_items);
+
 width = 150;
 height = 184;
+height = ITEM_HEIGHT * menu_item_length;
 
 _dx = x;
-_dy = gui_h - height;
 
 items = []
 
 display = function() {
 	for(var i = 0; i < menu_item_length; i++) {
 		currentMenu = self;
-		items[i] = instance_create_depth(_dx, _dy+(i*50), 0, obj_menu_item, {
+		items[i] = instance_create_depth(_dx, _dy+(i*ITEM_HEIGHT), -999, obj_menu_item, {
 			width: width,
-			height: 50,
+			height: ITEM_HEIGHT,
 			_dx:_dx,
-			_dy: _dy+(i*50),
+			_dy: _dy+(i*ITEM_HEIGHT),
 			text: selected_menu.menu_items[i].title,
 			type: selected_menu.menu_items[i].type,
 			menu_data: selected_menu.menu_items[i],
@@ -36,20 +38,17 @@ display = function() {
 	}
 }
 
-pos = 0;
-//visible_at_launch = true;
 visible = visible_at_launch;
-
-//all_menus = global.all_menus
 
 show_debug_message(selected_menu.identifier + " menu created, x = " + string(x));
 
 box_border = 10;
 item_vertical_spacing = 42;
-menu_item_length = array_length(selected_menu.menu_items);
+
 show_debug_message("menu_item_length = " + string(menu_item_length));
 for(var i = 0; i < menu_item_length; i++) {
-	title_length =  string_width(selected_menu.menu_items[i].title) + 10
+	title_length =  string_width(selected_menu.menu_items[i].title) + (ITEM_BORDER*2)
+	
 	show_debug_message(selected_menu.menu_items[i].title + " length is " + string(title_length))
 	if title_length > width {
 		width = title_length;

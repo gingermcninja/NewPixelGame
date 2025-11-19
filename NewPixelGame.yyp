@@ -95,6 +95,7 @@
     {"id":{"name":"pow","path":"sounds/pow/pow.yy",},},
     {"id":{"name":"pow3","path":"sounds/pow3/pow3.yy",},},
     {"id":{"name":"Woohoo","path":"sounds/Woohoo/Woohoo.yy",},},
+    {"id":{"name":"zap","path":"sounds/zap/zap.yy",},},
     {"id":{"name":"battle_heavy","path":"sprites/battle_heavy/battle_heavy.yy",},},
     {"id":{"name":"battle_light","path":"sprites/battle_light/battle_light.yy",},},
     {"id":{"name":"battle_run","path":"sprites/battle_run/battle_run.yy",},},

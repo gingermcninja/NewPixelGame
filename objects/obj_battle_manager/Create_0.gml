@@ -2,8 +2,10 @@ enemy_turn = 0;
 damage_to_enemy = 0;
 attack_sound = pow;
 
+gui_h = display_get_gui_height();
 
 obj_initial_menu = instance_create_depth(0,0,-999,obj_menu, {
+	_dy: gui_h - ITEM_HEIGHT*(array_length(global.main_menu.menu_items)),
 	visible_at_launch: true,
 	selected_menu: global.main_menu
 });

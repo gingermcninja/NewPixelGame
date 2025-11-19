@@ -3,19 +3,12 @@
 
 
 show_debug_message("item created - owner is " + owner.selected_menu.identifier);
-//beenClicked = false;
 
-
-//prevMx = device_mouse_x_to_gui(0)
-//prevMy = device_mouse_y_to_gui(0)
-
-//lastClickIdentifier = ""
 fightMenuOpen = false
+padding = 20
 
 action = function() {
-	//beenClicked = true;
 	show_debug_message("item clicked!");
-	
 	
 	owner.closeSubMenus();
 	
@@ -24,6 +17,7 @@ action = function() {
 			if obj_battle_player.data.charge >= 1 && !fightMenuOpen {
 				show_debug_message("Opening fight menu");
 				instance_create_depth(width, 0, -999, obj_menu, {
+					_dy: _dy,
 					visible_at_launch: true,
 					selected_menu: global.fight_menu,
 					parent_menu: owner
@@ -47,29 +41,18 @@ action = function() {
 			fightMenuOpen = false;
 
 		}
-		//closeSubMenus();
+
 	}
 	else if (menu_data.type == "menu") {
 		if(menu_data.identifier == "magic") {
 			instance_create_depth(width, 0, -999, obj_menu, {
+				_dy: owner._dy,
 				visible_at_launch: true,
 				selected_menu: global.magic_menu,
 				parent_menu: owner
 			});	
 		}
 	}
-	//lastClickIdentifier = menu_data.identifier
-	//beenClicked = false;
+
 }
 
-/*
-closeSubMenus = function() {
-	for(var i = 0; i < instance_number(obj_menu); ++i) {
-		var menu = instance_find(obj_menu, i);
-		if menu.x >= _dx+width {
-			show_debug_log("Closing menu");
-			instance_destroy(menu);
-		}
-	}
-}
-*/

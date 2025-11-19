@@ -1,5 +1,9 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+
+#macro ITEM_HEIGHT 50
+#macro ITEM_BORDER 20
+
 function create_menu(_x, _y, _options, _description = -1) {
 	with (instance_create_depth(_x, _y, -999, oMenu)) {
 		options = _options;
