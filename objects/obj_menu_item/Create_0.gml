@@ -41,9 +41,9 @@ action = function() {
 			fightMenuOpen = false;
 
 		}
-		else if(menu_data.identifier == "fire" || menu_data.identifier == "ice" || menu_data.identifier == "lightning") {
+		else if(menu_data.identifier == "cure1" || menu_data.identifier == "fire1" || menu_data.identifier == "ice1" || menu_data.identifier == "lightning1") {
 			obj_battle_manager.player_magic(menu_data.identifier);
-			owner.closeSubMenus();
+			owner.parent_menu.closeSubMenus();
 		}
 
 	}
@@ -52,7 +52,7 @@ action = function() {
 			instance_create_depth(width, 0, -999, obj_menu, {
 				_dy: owner._dy,
 				visible_at_launch: true,
-				selected_menu: global.magic_menu,
+				selected_menu: makeMagicMenuItems(obj_battle_player.data.known_spells),
 				parent_menu: owner
 			});	
 		}

@@ -5,13 +5,17 @@ move_speed = 1;
 tile_map = layer_tilemap_get_id("Tiles_Col");
 
 hp = 10;
+mp = 10;
 hp_total = 10;
+mp_total = 10;
 damage = 1;
 charge = 0;
 
 level = 1;
 xp = 0;
 xp_required = 100;
+
+known_spells = [global.all_magic.cure1, global.all_magic.fire1];
 
 function add_xp(_xp_to_add) {
 	xp += _xp_to_add;
@@ -22,6 +26,10 @@ function add_xp(_xp_to_add) {
 		
 		hp_total += 5;
 		hp = hp_total;
+		
+		mp_total += 5;
+		mp = mp_total;
+		
 		damage += 0.8;
 		audio_play_sound(Woohoo, 0, false);
 		create_dialog([

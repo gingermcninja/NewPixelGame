@@ -24,12 +24,26 @@ player_attack = function(_damage, _sound)
 
 player_magic = function(_magic_identifier)
 {
-	obj_enemy_damage = instance_create_depth(obj_battle_enemy.x-30, obj_battle_enemy.y-5, -999, obj_battle_damage);
-	damage_to_enemy = 20;
-	attack_sound = zap;
-	enemy_turn = 1;
-	alarm[0] = 40;
-	obj_battle_player.alarm[0] = 10;
+	spell = global.all_magic[$_magic_identifier]
+	if (obj_battle_player.data.mp >= spell.cost) {
+		if spell.target == "enemy" {
+			obj_enemy_damage = instance_create_depth(obj_battle_enemy.x-30, obj_battle_enemy.y-5, -999, obj_battle_damage, {
+				sprite_index: spr_battle_damage
+			});
+			damage_to_enemy = spell.effect;
+		} else {
+			damage_to_enemy = 0;
+			obj_battle_player.data.hp += 2;
+			if obj_battle_player.data.hp > obj_battle_player.data.hp_total {
+				obj_battle_player.data.hp = obj_battle_player.data.hp_total	
+			}
+		}
+		attack_sound = zap;
+		enemy_turn = 1;
+		alarm[0] = 40;
+		obj_battle_player.data.mp -= spell.cost;
+		obj_battle_player.alarm[0] = 10;
+	}
 }
 
 check_for_end = function ()

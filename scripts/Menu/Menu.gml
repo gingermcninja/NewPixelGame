@@ -91,3 +91,18 @@ magic_menu = {
 }
 
 all_menus = [ main_menu, fight_menu, magic_menu ];
+
+function makeMagicMenuItems(_magic) {
+	new_magic_menu = {
+		identifier: "magic",
+		menu_items: []
+	}
+	for (i = 0; i < array_length(_magic); i++) {
+		new_magic_menu.menu_items[i] = {
+			title: _magic[i].title,
+			type: "action",
+			identifier: _magic[i].identifier
+		}
+	}
+	return new_magic_menu;
+}
