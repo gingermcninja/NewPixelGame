@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"pow",
+  "%Name":"heal",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.4837415,
+  "duration":1.0453515,
   "exportDir":"",
-  "name":"pow",
+  "name":"heal",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"pow.wav",
+  "soundFile":"heal.wav",
   "volume":1.0,
 }

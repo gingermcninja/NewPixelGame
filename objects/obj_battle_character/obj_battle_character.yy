@@ -1,11 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_battle_damage",
+  "%Name":"obj_battle_character",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_battle_damage",
+  "name":"obj_battle_character",
   "overriddenProperties":[],
   "parent":{
     "name":"Battle",
@@ -29,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_battle_damage",
-    "path":"sprites/spr_battle_damage/spr_battle_damage.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }
