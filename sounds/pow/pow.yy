@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"pow",
   "parent":{
-    "name":"NewPixelGame",
-    "path":"NewPixelGame.yyp",
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
