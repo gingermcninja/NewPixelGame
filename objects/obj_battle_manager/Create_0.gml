@@ -28,17 +28,16 @@ player_attack = function(_damage, _sound)
 }
 
 show_number = function() {
-	x_adjustment = 775;
-	y_adjustment = 200;
+	adjustments = convert_coordinates(action_target.x+(action_target.sprite_width/4), action_target.y)
 	num_color = c_white;
 	if action_target == obj_battle_player {
-		x_adjustment = 300;
 		num_color = c_aqua;
 	}
-	instance_create_depth(action_target.x+x_adjustment, action_target.y+y_adjustment, -999, obj_battle_number, {
+	instance_create_depth(adjustments[0], adjustments[1], -999, obj_battle_number, {
 		effect_amount: effect_quantifier,
 		num_color: num_color
 	});
+
 }
 
 player_magic = function(_magic_identifier)
