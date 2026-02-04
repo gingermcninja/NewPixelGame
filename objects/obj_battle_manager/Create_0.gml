@@ -2,6 +2,21 @@ enemy_turn = 0;
 damage_to_enemy = 0;
 attack_sound = pow;
 
+enemy_2_data = obj_battle_switcher.enemy_data;
+enemy_2 = instance_create_depth(10,10, -999, obj_battle_enemy, {
+	data: enemy_2_data
+});
+with enemy_2 {
+	data = obj_battle_switcher.enemy_data;
+}
+
+
+first_enemy = instance_find(obj_battle_enemy, 0);
+first_enemy.data = obj_battle_switcher.enemy_data;
+with first_enemy {
+	data = obj_battle_switcher.enemy_data;
+}
+
 gui_h = display_get_gui_height();
 
 obj_initial_menu = instance_create_depth(0,0,-999,obj_menu, {
@@ -13,18 +28,22 @@ obj_initial_menu = instance_create_depth(0,0,-999,obj_menu, {
 
 player_attack = function(_damage, _sound) 
 {
-	action_target = obj_battle_enemy;
+	action_target = instance_find(obj_battle_enemy, 0);
 	damage_to_enemy = _damage;
 	effect_quantifier = damage_to_enemy;
 	attack_sound = _sound;
 	enemy_turn = 1;
 	alarm[0] = 40;	
-	obj_battle_player.action_effect = instance_create_depth(obj_battle_enemy.x-30, obj_battle_enemy.y-5, -999, obj_action_effect, {
+	obj_battle_player.action_effect = instance_create_depth(action_target.x-30, action_target.y-5, -999, obj_action_effect, {
 				visible: false,
 				sprite_index: spr_battle_damage
 			});
 	
 	obj_battle_player.alarm[0] = 10;
+	
+	show_debug_message("enemy count {0}", instance_number(obj_battle_enemy));
+	show_debug_message("target hp: {0}", action_target.data.hp);
+	show_debug_message("enemy2 hp: {0}", enemy_2.data.hp);
 }
 
 show_number = function() {
@@ -45,8 +64,8 @@ player_magic = function(_magic_identifier)
 	spell = global.all_magic[$_magic_identifier]
 	if (obj_battle_player.data.mp >= spell.cost) {
 		if spell.target == "enemy" {
-			action_target = obj_battle_enemy;
-			action_effect = instance_create_depth(obj_battle_enemy.x-30, obj_battle_enemy.y-5, -999, obj_action_effect, {
+			action_target = instance_find(obj_battle_enemy, 0);
+			action_effect = instance_create_depth(action_target.x-30, action_target.y-5, -999, obj_action_effect, {
 				visible: false,
 				sprite_index: spr_battle_damage
 			});
@@ -77,5 +96,6 @@ player_magic = function(_magic_identifier)
 
 check_for_end = function ()
 {
-	return (obj_battle_enemy.data.hp <= 0 || obj_battle_player.data.hp <= 0);
+	action_target = instance_find(obj_battle_enemy, 0);
+	return (action_target.data.hp <= 0 || obj_battle_player.data.hp <= 0);
 }
