@@ -1,4 +1,6 @@
-obj_battle_enemy.data.hp -= damage_to_enemy;
+
+//target.data.hp -= damage_to_enemy;
+action_target.take_damage(damage_to_enemy);
 
 
 if (check_for_end()) {
@@ -6,7 +8,9 @@ if (check_for_end()) {
 	}
 else {
 	alarm[1] = 60;
-	obj_battle_enemy.alarm[0] = 30;
+	//action_target.alarm[0] = 30;
+	action_in_progress = false;
+	//perform_next_action();
 }
 
 obj_battle_player.data.charge += 0.4;

@@ -3,7 +3,7 @@
 //menu = all_menus;
 //menu_items = [];
 
-#macro ITEM_WIDTH 150
+//#macro MENU_ITEM_WIDTH 150
 
 draw_set_font(Font1);
 gui_w = display_get_gui_width();
@@ -13,7 +13,7 @@ menu_item_length = array_length(selected_menu.menu_items);
 
 width = 150;
 height = 184;
-height = ITEM_HEIGHT * menu_item_length;
+height = MENU_ITEM_HEIGHT * menu_item_length;
 
 _dx = x;
 
@@ -22,11 +22,11 @@ items = []
 display = function() {
 	for(var i = 0; i < menu_item_length; i++) {
 		currentMenu = self;
-		items[i] = instance_create_depth(_dx, _dy+(i*ITEM_HEIGHT), -999, obj_menu_item, {
+		items[i] = instance_create_depth(_dx, _dy+(i*MENU_ITEM_HEIGHT), -999, obj_menu_item, {
 			width: width,
-			height: ITEM_HEIGHT,
+			height: MENU_ITEM_HEIGHT,
 			_dx:_dx,
-			_dy: _dy+(i*ITEM_HEIGHT),
+			_dy: _dy+(i*MENU_ITEM_HEIGHT),
 			text: selected_menu.menu_items[i].title,
 			type: selected_menu.menu_items[i].type,
 			menu_data: selected_menu.menu_items[i],
@@ -39,6 +39,7 @@ display = function() {
 }
 
 visible = visible_at_launch;
+//visible = obj_battle_manager.control_state == ControlState.ActionSelection;
 
 show_debug_message(selected_menu.identifier + " menu created, x = " + string(x));
 
@@ -47,7 +48,7 @@ item_vertical_spacing = 42;
 
 show_debug_message("menu_item_length = " + string(menu_item_length));
 for(var i = 0; i < menu_item_length; i++) {
-	title_length =  string_width(selected_menu.menu_items[i].title) + (ITEM_BORDER*2)
+	title_length =  string_width(selected_menu.menu_items[i].title) + (MENU_ITEM_BORDER*2)
 	
 	show_debug_message(selected_menu.menu_items[i].title + " length is " + string(title_length))
 	if title_length > width {

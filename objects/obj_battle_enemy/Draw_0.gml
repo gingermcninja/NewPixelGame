@@ -7,3 +7,8 @@ var _h = 6;
 
 draw_sprite_stretched(spr_box, 0, _x, _y, _w, _h);
 draw_sprite_stretched_ext(spr_box, 1, _x, _y, _w * (data.hp / data.hp_total), _h, c_red, 1);
+
+_y += _h;
+_h = 4;
+draw_sprite_stretched(spr_box, 0, _x, _y, _w, _h);
+draw_sprite_stretched_ext(spr_box, 1, _x, _y, _w * (wait_elapsed / data.action_speed), _h, c_green, 1);

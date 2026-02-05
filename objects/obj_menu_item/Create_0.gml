@@ -11,6 +11,7 @@ action = function() {
 	show_debug_message("item clicked!");
 	
 	owner.closeSubMenus();
+	//obj_battle_manager.action_selected(self);
 	
 	if(menu_data.type == "action") {	
 		if(menu_data.identifier == "fight") {
@@ -24,7 +25,8 @@ action = function() {
 				});
 				fightMenuOpen = true;
 			} else {
-				obj_battle_manager.player_attack(obj_battle_player.data.damage, pow);
+				//obj_battle_manager.player_attack(obj_battle_player.data.damage, pow);
+				obj_battle_manager.action_selected(menu_data);
 				owner.closeSubMenus();
 				fightMenuOpen = false;
 			}
@@ -36,13 +38,15 @@ action = function() {
 		}
 		else if(menu_data.identifier == "heavy_attack") {
 			obj_battle_player.data.charge = 0;
-			obj_battle_manager.player_attack(obj_battle_player.data.damage * 2, p_pow);	
+			//obj_battle_manager.player_attack(obj_battle_player.data.damage * 2, p_pow);
+			obj_battle_manager.action_selected(menu_data);
 			owner.parent_menu.closeSubMenus();
 			fightMenuOpen = false;
 
 		}
 		else if(menu_data.identifier == "cure1" || menu_data.identifier == "fire1" || menu_data.identifier == "ice1" || menu_data.identifier == "lightning1") {
-			obj_battle_manager.player_magic(menu_data.identifier);
+			//obj_battle_manager.player_magic(menu_data.identifier);
+			obj_battle_manager.action_selected(menu_data);
 			owner.parent_menu.closeSubMenus();
 		}
 
@@ -57,6 +61,7 @@ action = function() {
 			});	
 		}
 	}
+	
 
 }
 

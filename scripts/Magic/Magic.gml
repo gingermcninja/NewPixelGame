@@ -1,5 +1,12 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+
+enum ActionTarget {
+	Player,
+	Enemy,
+	Both
+}
+
 all_magic = {
 	fire1: {
 		identifier: "fire1",
@@ -7,7 +14,7 @@ all_magic = {
 		effect: 5,
 		sound: zap,
 		title: "Fire",
-		target: "enemy",
+		target: ActionTarget.Enemy,
 		animation: "fire1"
 	},
 	ice1: {
@@ -16,7 +23,7 @@ all_magic = {
 		effect: 5,
 		sound: zap,
 		title: "ice",
-		target: "enemy",
+		target: ActionTarget.Enemy,
 		animation: "ice1"
 	},
 	lightning1: {
@@ -25,7 +32,7 @@ all_magic = {
 		effect: 5,
 		sound: zap,
 		title: "Lightning",
-		target: "enemy",
+		target: ActionTarget.Enemy,
 		animation: "lightning1"
 	},
 	cure1: {
@@ -34,7 +41,7 @@ all_magic = {
 		effect: 5,
 		sound: heal,
 		title: "Cure",
-		target: "player",
+		target: ActionTarget.Player,
 		animation: "cure1"
 	}
 }
