@@ -7,7 +7,12 @@ if data.type_index == 4 {
 	y-=24
 }
 
+wait_elapsed = 0;
 
 take_damage = function(_damage_amount) {
 	data.hp -= _damage_amount;
+}
+
+attack_player = function() {
+	alarm[0] = 1;
 }

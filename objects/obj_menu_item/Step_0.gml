@@ -4,7 +4,11 @@
 // Inherit the parent event
 //event_inherited();
 
-visible = !obj_battle_manager.enemy_turn
+//visible = !obj_battle_manager.enemy_turn
+visible = (obj_battle_manager.control_state == ControlState.ActionSelection || 
+			obj_battle_manager.control_state == ControlState.EnemySelection || 
+			obj_battle_manager.control_state == ControlState.PlayerSelection);
+
 if(visible) {
 	_mx = device_mouse_x_to_gui(0)
 	_my = device_mouse_y_to_gui(0)

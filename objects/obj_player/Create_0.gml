@@ -4,12 +4,13 @@ move_speed = 1;
 
 tile_map = layer_tilemap_get_id("Tiles_Col");
 
-hp = 10;
+hp = 50;
 mp = 10;
-hp_total = 10;
+hp_total = 50;
 mp_total = 10;
 damage = 1;
 charge = 0;
+action_speed = 5;
 
 level = 1;
 xp = 0;

@@ -2,38 +2,81 @@ enemy_turn = 0;
 damage_to_enemy = 0;
 attack_sound = pow;
 
-enemy_2_data = obj_battle_switcher.enemy_data;
-enemy_2 = instance_create_depth(10,10, -999, obj_battle_enemy, {
-	data: enemy_2_data
-});
-with enemy_2 {
-	data = obj_battle_switcher.enemy_data;
+enemy_x_pos = [180, 200, 220, 245, 265];
+enemy_y_pos = [40, 70, 100, 50, 80];
+enemies = [];
+
+turn_queue = ds_queue_create();
+
+enum ControlState {
+	ActionSelection,
+	EnemySelection,
+	PlayerSelection,
+	PlayerActionInProgress,
+	EnemyActionInProgress,
+	Wait
 }
 
+create_enemies = function(_num_enemies) {
+	for(var i = 0; i < _num_enemies; i++) {
+		var enemy_data = {
+			hp: obj_battle_switcher.enemy_data.hp,
+			hp_total: obj_battle_switcher.enemy_data.hp_total,
+			idle_left_sprite: obj_battle_switcher.enemy_data.idle_left_sprite,
+			type_index: obj_battle_switcher.enemy_data.type_index,
+			damage: obj_battle_switcher.enemy_data.damage,
+			action_speed: obj_battle_switcher.enemy_data.action_speed
+		}
+		enemies[i] = instance_create_depth(enemy_x_pos[i],enemy_y_pos[i], -999, obj_battle_enemy, {
+			data: enemy_data
+		});
+	}
 
-first_enemy = instance_find(obj_battle_enemy, 0);
-first_enemy.data = obj_battle_switcher.enemy_data;
-with first_enemy {
-	data = obj_battle_switcher.enemy_data;
 }
+
+control_state = ControlState.Wait;
+number_of_enemies = irandom_range(1, 5);
+
+create_enemies(number_of_enemies);
+first_enemy = enemies[0];
+selected_enemy = first_enemy;
+selected_action = 0;
+
 
 gui_h = display_get_gui_height();
 
 obj_initial_menu = instance_create_depth(0,0,-999,obj_menu, {
-	_dy: gui_h - ITEM_HEIGHT*(array_length(global.main_menu.menu_items)),
+	_dy: gui_h - MENU_ITEM_HEIGHT*(array_length(global.main_menu.menu_items)),
 	visible_at_launch: true,
 	selected_menu: global.main_menu
 });
 
+action_in_progress = false;
+perform_next_action = function() {
+	if(!ds_queue_empty(turn_queue)) {
+		show_debug_message("next turn...");
+		next_up = ds_queue_dequeue(turn_queue);	
+		if(instance_exists(next_up)) {
+			if(next_up.object_index == obj_battle_player) {
+				show_debug_message("players turn");
+				control_state = ControlState.ActionSelection
+			} else {
+				show_debug_message("enemy turn");
+				action_in_progress = true;
+				next_up.alarm[0] = 30;
+			}
+		}
+	}
+}
 
-player_attack = function(_damage, _sound) 
+player_attack = function(_damage, _sound, _enemy) 
 {
-	action_target = instance_find(obj_battle_enemy, 0);
+	action_target = _enemy;
 	damage_to_enemy = _damage;
 	effect_quantifier = damage_to_enemy;
 	attack_sound = _sound;
 	enemy_turn = 1;
-	alarm[0] = 40;	
+	alarm[0] = 40;
 	obj_battle_player.action_effect = instance_create_depth(action_target.x-30, action_target.y-5, -999, obj_action_effect, {
 				visible: false,
 				sprite_index: spr_battle_damage
@@ -41,9 +84,6 @@ player_attack = function(_damage, _sound)
 	
 	obj_battle_player.alarm[0] = 10;
 	
-	show_debug_message("enemy count {0}", instance_number(obj_battle_enemy));
-	show_debug_message("target hp: {0}", action_target.data.hp);
-	show_debug_message("enemy2 hp: {0}", enemy_2.data.hp);
 }
 
 show_number = function() {
@@ -59,12 +99,55 @@ show_number = function() {
 
 }
 
-player_magic = function(_magic_identifier)
+action_selected = function(_action) {
+	action_in_progress = true;
+	selected_action = _action;
+	if(_action.identifier == "cure1") {
+		start_player_choice();
+	} else {
+		start_enemy_choice();
+	}
+}
+
+start_enemy_choice = function() {
+	control_state = ControlState.EnemySelection;
+}
+
+start_player_choice = function() {
+	control_state = ControlState.PlayerSelection;	
+}
+
+player_selected = function(_target) {
+	
+}
+
+enemy_selected = function(_enemy) {
+	process_action(selected_action, _enemy);
+}
+
+process_action = function(_action, _enemy) {
+	if(_action.type == "action") {	
+		if(_action.identifier == "fight") {
+				player_attack(obj_battle_player.data.damage, pow, _enemy);
+		}
+		else if(_action.identifier == "heavy_attack") {
+			player_attack(obj_battle_player.data.damage * 2, p_pow, _enemy);
+
+		}
+		else if(_action.identifier == "cure1" || _action.identifier == "fire1" || _action.identifier == "ice1" || _action.identifier == "lightning1") {
+			player_magic(_action.identifier, _enemy);
+		}
+		obj_battle_player.wait_elapsed = 0;
+		control_state = ControlState.Wait;
+	}
+}
+
+player_magic = function(_magic_identifier, _enemy)
 {
 	spell = global.all_magic[$_magic_identifier]
 	if (obj_battle_player.data.mp >= spell.cost) {
-		if spell.target == "enemy" {
-			action_target = instance_find(obj_battle_enemy, 0);
+		if spell.target == ActionTarget.Enemy {
+			action_target = _enemy;
 			action_effect = instance_create_depth(action_target.x-30, action_target.y-5, -999, obj_action_effect, {
 				visible: false,
 				sprite_index: spr_battle_damage
@@ -94,8 +177,26 @@ player_magic = function(_magic_identifier)
 	}
 }
 
+remove_enemy = function(_enemy) {
+	for(var i = 0; i < number_of_enemies; i++) {
+		if(enemies[i] == _enemy) {
+			array_delete(enemies, i, 1);
+		}
+	}	
+}
+
 check_for_end = function ()
 {
-	action_target = instance_find(obj_battle_enemy, 0);
-	return (action_target.data.hp <= 0 || obj_battle_player.data.hp <= 0);
+	//action_target = instance_find(obj_battle_enemy, 0);
+	var enemies_defeated = true;
+	for(var i = 0; i < array_length(enemies); i++) {
+		if(enemies[i].data.hp <= 0) {
+			defeated = enemies[i];
+			array_delete(enemies, i, 1);
+			instance_destroy(defeated);
+		} else {
+			enemies_defeated = false;	
+		}
+	}
+	return (array_length(enemies) == 0 || obj_battle_player.data.hp <= 0);
 }
