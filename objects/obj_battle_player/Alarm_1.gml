@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-
+/*
 x -= 2;
 if (x > xstart) {
 	if(!attack_finished) {
@@ -8,4 +8,5 @@ if (x > xstart) {
 		attack_finished = true
 	}
 	alarm[1] = 1;	
-}
+}*/
+move_back();
