@@ -15,7 +15,7 @@ all_magic = {
 		sound: zap,
 		title: "Fire",
 		target: ActionTarget.Enemy,
-		animation: "fire1"
+		animation: spr_battle_damage
 	},
 	ice1: {
 		identifier: "ice1",
@@ -24,7 +24,7 @@ all_magic = {
 		sound: zap,
 		title: "ice",
 		target: ActionTarget.Enemy,
-		animation: "ice1"
+		animation: spr_battle_damage
 	},
 	lightning1: {
 		identifier: "lightning1",
@@ -33,7 +33,7 @@ all_magic = {
 		sound: zap,
 		title: "Lightning",
 		target: ActionTarget.Enemy,
-		animation: "lightning1"
+		animation: spr_battle_damage
 	},
 	cure1: {
 		identifier: "cure1",
@@ -42,7 +42,7 @@ all_magic = {
 		sound: heal,
 		title: "Cure",
 		target: ActionTarget.Player,
-		animation: "cure1"
+		animation: cure1
 	}
 }
 

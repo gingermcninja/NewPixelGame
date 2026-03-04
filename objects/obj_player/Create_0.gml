@@ -15,6 +15,7 @@ action_speed = 5;
 level = 1;
 xp = 0;
 xp_required = 100;
+battle_xp = 0;
 
 known_spells = [global.all_magic.cure1, global.all_magic.fire1];
 

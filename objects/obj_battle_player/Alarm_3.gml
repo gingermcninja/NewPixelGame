@@ -1,0 +1,1 @@
+increase_attack_charge();

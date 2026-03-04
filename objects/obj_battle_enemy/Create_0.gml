@@ -9,9 +9,14 @@ if data.type_index == 4 {
 
 wait_elapsed = 0;
 
+
 take_damage = function(_damage_amount) {
 	data.hp -= _damage_amount;
+	if(data.hp <= 0) {
+		obj_battle_manager.remove_enemy(self);
+	}
 }
+
 
 attack_player = function() {
 	alarm[0] = 1;
