@@ -40,21 +40,25 @@ main_menu = {
 		{
 			title: "Fight",
 			type: "action",
+			subtype: "attack",
 			identifier: "fight"
 		},
 		{
 			title: "Magic",
 			type: "menu",
+			subtype: "",
 			identifier: "magic"
 		},
 		{
 			title: "Flee",
 			type: "action",
+			subtype: "flee",
 			identifier: "flee"
 		},
 		{
 			title: "Item",
 			type: "menu",
+			subtype: "",
 			identifier: "item"
 		}
 	]
@@ -66,6 +70,7 @@ fight_menu = {
 		{
 			title: "Heavy Attack",
 			type: "action",
+			subtype: "attack",
 			identifier: "heavy_attack",
 		}
 	]
@@ -77,16 +82,19 @@ magic_menu = {
 		{
 			title: "Fire",
 			type: "action",
+			subtype: "magic",
 			identifier: "fire",
 		},
 		{
 			title: "Ice",
 			type: "action",
+			subtype: "magic",
 			identifier: "ice",
 		},
 		{
 			title: "Lightning",
 			type: "action",
+			subtype: "magic",
 			identifier: "lightning",
 		}
 	]

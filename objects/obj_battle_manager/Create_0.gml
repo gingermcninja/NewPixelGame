@@ -9,6 +9,9 @@ enemies = [];
 turn_queue = ds_queue_create();
 xp_earned = 0;
 
+end_battle_timer = -1;
+check_for_end_timer = -1;
+
 obj_battle_indicator.visible = false;
 
 enum ControlState {
@@ -54,51 +57,24 @@ action_in_progress = false;
 perform_next_action = function() {
 	if(!ds_queue_empty(turn_queue)) {
 		show_debug_message("next turn...");
-		next_up = ds_queue_dequeue(turn_queue);	
+		next_up = ds_queue_dequeue(turn_queue);
 		if(instance_exists(next_up)) {
 			if(next_up.object_index == obj_battle_player) {
 				show_debug_message("players turn");
 				control_state = ControlState.ActionSelection
 			} else {
-				show_debug_message("enemy turn");
-				action_in_progress = true;
-				next_up.alarm[0] = 30;
+				if(array_contains(enemies, next_up.id)) {
+					show_debug_message("enemy turn");
+					action_in_progress = true;
+					next_up.move_forward_after_delay(30);
+				} else {
+					show_debug_message("enemy " + next_up.id + " in queue not found - probably dead");	
+				}
 			}
 		}
 	}
 }
-/*
-player_attack = function(_damage, _sound, _enemy) 
-{
-	action_target = _enemy;
-	damage_to_enemy = _damage;
-	effect_quantifier = damage_to_enemy;
-	attack_sound = _sound;
-	//enemy_turn = 1;
-	alarm[0] = 40;
-	obj_battle_player.action_effect = instance_create_depth(action_target.x-30, action_target.y-5, -999, obj_action_effect, {
-				visible: false,
-				sprite_index: spr_battle_damage
-			});
-	
-	obj_battle_player.alarm[0] = 10;
-	
-}
-*/
-/*
-show_number = function() {
-	adjustments = convert_coordinates(action_target.x+(action_target.sprite_width/4), action_target.y)
-	num_color = c_white;
-	if action_target == obj_battle_player {
-		num_color = c_aqua;
-	}
-	instance_create_depth(adjustments[0], adjustments[1], -999, obj_battle_number, {
-		effect_amount: effect_quantifier,
-		num_color: num_color
-	});
 
-}
-*/
 action_selected = function(_action) {
 	action_in_progress = true;
 	selected_action = _action;
@@ -128,16 +104,12 @@ enemy_selected = function(_enemy) {
 process_action = function(_action, _target) {
 	if(_action.type == "action") {	
 		if(_action.identifier == "fight") {
-				//player_attack(obj_battle_player.data.damage, pow, _enemy);
-				obj_battle_player.player_attack(pow, _target, false);
+			obj_battle_player.player_attack(pow, _target, false);
 		}
 		else if(_action.identifier == "heavy_attack") {
-			//player_attack(obj_battle_player.data.damage * 2, p_pow, _enemy);
-			obj_battle_player.player_attack(pow, _target, true);
-
+			obj_battle_player.player_attack(p_pow, _target, true);
 		}
 		else if(_action.identifier == "cure1" || _action.identifier == "fire1" || _action.identifier == "ice1" || _action.identifier == "lightning1") {
-			//player_magic(_action.identifier, _enemy);
 			obj_battle_player.player_magic(_action.identifier, _target);
 		}
 		obj_battle_player.wait_elapsed = 0;
@@ -145,68 +117,44 @@ process_action = function(_action, _target) {
 	}
 }
 
-/*
-player_magic = function(_magic_identifier, _enemy)
-{
-	obj_battle_player.player_magic(_magic_identifier, _enemy);
-	
-	spell = global.all_magic[$_magic_identifier]
-	if (obj_battle_player.data.mp >= spell.cost) {
-		if spell.target == ActionTarget.Enemy {
-			action_target = _enemy;
-			action_effect = instance_create_depth(action_target.x-30, action_target.y-5, -999, obj_action_effect, {
-				visible: false,
-				sprite_index: spr_battle_damage
-			});
-			damage_to_enemy = spell.effect;
-			effect_quantifier = damage_to_enemy;
-		} else {
-			action_target = obj_battle_player;
-			action_effect = instance_create_depth(obj_battle_player.x-35, obj_battle_player.y-40, -999, obj_action_effect, {
-				visible: false,
-				sprite_index: cure1
-			});
-
-			damage_to_enemy = 0;
-			effect_quantifier = 2;
-			obj_battle_player.data.hp += effect_quantifier;
-			if obj_battle_player.data.hp > obj_battle_player.data.hp_total {
-				obj_battle_player.data.hp = obj_battle_player.data.hp_total	
-			}
-		}
-		obj_battle_player.action_effect = action_effect;
-		attack_sound = spell.sound;
-		//enemy_turn = 1;
-		alarm[0] = 40;
-		obj_battle_player.data.mp -= spell.cost;
-		obj_battle_player.alarm[0] = 10;
-	}
-	
-}
-*/
-
 remove_enemy = function(_enemy) {
 	for(var i = 0; i < array_length(enemies); i++) {
 		if(enemies[i] == _enemy) {
 			array_delete(enemies, i, 1);
 			instance_destroy(_enemy);
+			check_for_end_after_delay(10);
 		}
 	}	
 }
 
+check_for_end_after_delay = function(_delay) {
+	check_for_end_timer = time_source_create(time_source_game,_delay,time_source_units_frames, check_for_end)
+	time_source_start(check_for_end_timer);
+}
+
 check_for_end = function ()
 {
-	//action_target = instance_find(obj_battle_enemy, 0);
-	var enemies_defeated = true;
-	for(var i = 0; i < array_length(enemies); i++) {
-		if(enemies[i].data.hp <= 0) {
-			defeated = enemies[i];
-			xp_earned += defeated.data.xp_value;
-			array_delete(enemies, i, 1);
-			instance_destroy(defeated);
-		} else {
-			enemies_defeated = false;	
-		}
+	if(check_for_end_timer != -1) {
+		time_source_destroy(check_for_end_timer);	
 	}
-	return (array_length(enemies) == 0 || obj_battle_player.data.hp <= 0);
+	
+	if (array_length(enemies) == 0 || obj_battle_player.data.hp <= 0) {
+		end_battle_timer = time_source_create(time_source_game,60,time_source_units_frames,end_battle);
+		time_source_start(end_battle_timer);
+	} else {
+		action_in_progress = false;
+	}
+
+}
+
+
+end_battle = function () {
+	if(end_battle_timer != -1) {
+		time_source_destroy(end_battle_timer);
+	}
+	obj_battle_switcher.enemy_data.hp = 0;
+	if(array_length(enemies) == 0) {
+		obj_battle_player.data.xp += xp_earned;	
+	}
+	room_goto(obj_battle_switcher.original_room);
 }

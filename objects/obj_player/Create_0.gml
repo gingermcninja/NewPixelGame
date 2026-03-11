@@ -33,6 +33,7 @@ function add_xp(_xp_to_add) {
 		mp = mp_total;
 		
 		damage += 0.8;
+		damage = round(damage);
 		audio_play_sound(Woohoo, 0, false);
 		create_dialog([
 		{
