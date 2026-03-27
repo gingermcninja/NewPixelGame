@@ -9,4 +9,4 @@ if (x > xstart) {
 	}
 	alarm[1] = 1;	
 }*/
-move_back();
+//move_back();

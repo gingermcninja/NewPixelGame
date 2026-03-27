@@ -1,6 +1,4 @@
-//enemy_turn = 0;
-damage_to_enemy = 0;
-attack_sound = pow;
+//damage_to_enemy = 0;
 
 enemy_x_pos = [180, 200, 220, 245, 265];
 enemy_y_pos = [40, 70, 100, 50, 80];
@@ -112,7 +110,7 @@ process_action = function(_action, _target) {
 		else if(_action.identifier == "cure1" || _action.identifier == "fire1" || _action.identifier == "ice1" || _action.identifier == "lightning1") {
 			obj_battle_player.player_magic(_action.identifier, _target);
 		}
-		obj_battle_player.wait_elapsed = 0;
+		obj_battle_player.reset_wait_timer()
 		control_state = ControlState.Wait;
 	}
 }

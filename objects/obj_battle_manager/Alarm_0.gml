@@ -2,7 +2,7 @@
 //target.data.hp -= damage_to_enemy;
 //action_target.take_damage(damage_to_enemy);
 
-
+/*
 if (check_for_end()) {
 	alarm[2] = 60;
 } else {
@@ -11,3 +11,4 @@ if (check_for_end()) {
 	action_in_progress = false;
 	//perform_next_action();
 }
+*/

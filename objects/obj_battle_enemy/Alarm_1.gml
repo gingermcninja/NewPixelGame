@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-
+/*
 x += 2;
 if (x < xstart) {
 	alarm[1] = 1;
@@ -11,3 +11,4 @@ if (x < xstart) {
 	wait_elapsed = 0;
 	//obj_battle_manager.perform_next_action();	
 }
+*/

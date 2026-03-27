@@ -1,1 +1,1 @@
-increase_attack_charge();
+//increase_attack_charge();

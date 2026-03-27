@@ -9,8 +9,7 @@ move_timer = -1;
 
 player_attack = function(_sound, _enemy, _heavy=false) 
 {
-	action_target = _enemy;
-	obj_battle_manager.action_target = _enemy;
+	//action_target = _enemy;
 	damage_to_enemy = data.damage;
 	if(_heavy == true) {
 		damage_to_enemy = damage_to_enemy*2;	
@@ -36,27 +35,26 @@ player_magic = function(_magic_identifier, _enemy)
 	spell = global.all_magic[$_magic_identifier]
 	if (data.mp >= spell.cost) {
 		if spell.target == ActionTarget.Enemy {
-			damage_to_enemy = spell.effect;
-			effect_quantifier = damage_to_enemy;
-			action_target = _enemy;
-			action_effect = _enemy.create_action_effect(damage_to_enemy, spell.animation);
+			//damage_to_enemy = spell.effect;
+			//effect_quantifier = damage_to_enemy;
+			//action_target = _enemy;
+			action_effect = _enemy.create_action_effect(spell.effect, spell.animation);
 			action_effect.start_effect_after_delay(30);
-			_enemy.take_damage_after_delay(damage_to_enemy,40);
+			_enemy.take_damage_after_delay(spell.effect,40);
 		} else {
-			effect_quantifier = spell.effect;
-			action_target = self;
-			action_effect = self.create_action_effect(effect_quantifier, spell.animation)
+			//effect_quantifier = spell.effect;
+			//action_target = self;
+			action_effect = self.create_action_effect(spell.effect, spell.animation)
 			action_effect.start_effect_after_delay(20);
-			damage_to_enemy = 0;
+			//damage_to_enemy = 0;
 			
-			data.hp += effect_quantifier;
+			data.hp += spell.effect;
 			if data.hp > data.hp_total {
 				data.hp = data.hp_total	
 			}
 		}
 		action_effect = action_effect;
 		attack_sound = spell.sound;
-		
 		
 		data.mp -= spell.cost;
 		move_forward_after_delay(10);
@@ -128,4 +126,8 @@ increase_attack_charge = function() {
 	if(charge_timer != -1) {
 		time_source_destroy(charge_timer);
 	}
+}
+
+reset_wait_timer = function() {
+	wait_elapsed = 0;
 }
