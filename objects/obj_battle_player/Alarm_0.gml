@@ -14,4 +14,4 @@ else
 {	
 	alarm[0] = 1;	
 }*/
-move_forward();
+//move_forward();

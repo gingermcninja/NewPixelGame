@@ -1,1 +1,1 @@
-take_damage(damage_to_take);
+//take_damage(damage_to_take);
