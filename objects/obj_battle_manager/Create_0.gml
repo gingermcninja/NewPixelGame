@@ -118,6 +118,7 @@ process_action = function(_action, _target) {
 remove_enemy = function(_enemy) {
 	for(var i = 0; i < array_length(enemies); i++) {
 		if(enemies[i] == _enemy) {
+			xp_earned += _enemy.data.xp_value;
 			array_delete(enemies, i, 1);
 			instance_destroy(_enemy);
 			check_for_end_after_delay(10);
